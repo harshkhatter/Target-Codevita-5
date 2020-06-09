@@ -1,0 +1,46 @@
+#https://www.hackerrank.com/contests/target-codevita-5/challenges/the-hurdle-race
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the hurdleRace function below.
+def hurdleRace(k, height):
+    #A function hurdleRace with two arguments: 'k' as player height and 'height' as array of hurdles
+    #Take a temp variable 'mx' which stores the maximum hurdle height
+    mx = max(height)
+    
+    # check for maximum hurdle height with the player's height
+    if mx-k > 0:
+        return mx-k         # return the difference 
+    else:
+        return 0            # return the difference 
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    # number of hurdles is stored in variable 'n'
+    n = int(nk[0])
+
+    # height of player is stored in variable 'k'
+    k = int(nk[1])
+
+    #array of height of hurdles is stored in 'height'
+    height = list(map(int, input().rstrip().split()))
+
+    #Call a function hurdleRace with two arguments: 'k' as player height and 'height' as array of hurdles
+    result = hurdleRace(k, height)
+
+    # return the result in form of number of power ups required to take
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+#https://www.hackerrank.com/contests/target-codevita-5/challenges/the-hurdle-race
