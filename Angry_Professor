@@ -1,0 +1,54 @@
+# https://www.hackerrank.com/contests/target-codevita-5/challenges/angry-professor
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the angryProfessor function below.
+def angryProfessor(k, a):
+    #function angryProfessor with two argument: 'k' as threshold and 'a' as array
+    #declare a temp variable and initialize as 0
+    count = 0
+    
+    #traverse all timings one-by-one to check in-time <=0
+    for i in a:
+        if i <= 0:      # if intime is before professor then count= count +1
+            count+=1
+
+    # check the value of count 
+    
+    # if count > = threshold, class is not cancelled and return NO
+    if count >= k:
+        return "NO"
+    
+    # if count < threshold, class is cancelled and return YES
+    else:
+        return "YES"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        nk = input().split()
+
+        n = int(nk[0])
+
+        #Threshold number of students in class
+        k = int(nk[1])
+
+        # timings of students in an array
+        a = list(map(int, input().rstrip().split()))
+
+        #call a function angryProfessor with two argument: 'k' as threshold and 'a' as array
+        result = angryProfessor(k, a)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
+
+# https://www.hackerrank.com/contests/target-codevita-5/challenges/angry-professor
