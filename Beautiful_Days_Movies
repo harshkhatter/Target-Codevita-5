@@ -1,0 +1,62 @@
+#!/bin/python3
+
+#https://www.hackerrank.com/contests/target-codevita-5/challenges/beautiful-days-at-the-movies
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the beautifulDays function below.
+def beautifulDays(i, j, k):
+    #a function with three arguments ; start date, end date and divisor
+    #declare a temp variable and initialize as 0
+    count = 0
+    
+    #take all the values one by one between i and j        
+    while i<=j:
+        #declare a temp variable and initialize as 0
+        Reverse = 0
+        
+        #take a clone of i to find reverse i
+        i1=i
+        
+        #code to reverse the date
+        while(i1 > 0):
+            Reminder = i1%10
+            Reverse = (Reverse *10) + Reminder
+            i1 = i1//10
+            
+        # find the difference of 'i' and reverse 'i'
+        chk = abs(i - Reverse)
+        # check for divisor and reminder 0, if it is, then count = count + 1
+        if chk % k ==0:
+            count +=1
+        i+=1
+    
+    #return the count value
+    return count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ijk = input().split()
+    
+    #variable 'i' stores the start date
+    i = int(ijk[0])
+
+    #variable 'j' stores the end date
+    j = int(ijk[1])
+
+    #variable 'k' stores the divisor value
+    k = int(ijk[2])
+
+    #call a function with three arguments ; start date, end date and divisor
+    result = beautifulDays(i, j, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+#https://www.hackerrank.com/contests/target-codevita-5/challenges/beautiful-days-at-the-movies
